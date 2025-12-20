@@ -25,6 +25,33 @@ void inseratend(node* &head,int data){
 
 }
 }
+
+
+void insertatposition(node* &head,int position,int data){
+  node* nodetoinsert=new node;
+    nodetoinsert->data=data;
+    if(position==1){
+        nodetoinsert->next=head;//
+        head=nodetoinsert;
+        return;
+    }
+    else{   
+        node* temp=head;//
+        int cnt=1;//
+        while(cnt<position-1){
+            temp=temp->next;//why? to reach the node before the position
+            cnt++;
+        }
+        if(temp->next==NULL){
+            nodetoinsert->next=NULL;
+            temp->next=nodetoinsert;
+            return;
+        }
+        nodetoinsert->next=temp->next;
+        temp->next=nodetoinsert;
+
+    }
+}
 //another way to insert using tail pointer
 void insertatend_tail(node* &tail,int data){
     node* newnode=new node();
@@ -79,6 +106,10 @@ int main(){
     printlinkedlist(head);
     
     insertatend_tail(tail,15);
+    cout<<endl;
+    printlinkedlist(head);
+
+    insertatposition(head,6,31);
     cout<<endl;
     printlinkedlist(head);
     return 0;
