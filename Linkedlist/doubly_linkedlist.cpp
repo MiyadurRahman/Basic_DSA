@@ -202,6 +202,9 @@ int main()
 {
 
     ListNode* head = NULL;
+    head = insertLast(head, 10);
+    head = insertLast(head, 20);
+    printList(head);
 
 
 

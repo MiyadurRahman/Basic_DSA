@@ -38,5 +38,8 @@ int main(){
     // }
 
     printlinkedlist(head);
+
+    
     return 0;
+
 }   
