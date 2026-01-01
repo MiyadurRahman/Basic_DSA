@@ -43,6 +43,34 @@ return head;
 
 
 }
+Node* deleteatpos(Node* head,int position){
+    if(head==NULL || position==-1){
+        return head;
+
+    }
+    else if(position ==1){
+        Node* temp=head;
+        head=head->next;
+        free(temp);
+        return head;
+    }
+    else{
+        int count=1;
+        Node* temp=head;
+        Node* temp2;
+        while(count<position-1){
+            temp=temp->next;
+            count++;
+        }
+        temp2=temp->next;
+        if(temp->next==NULL){
+            return head;
+        }
+        temp->next=temp2->next;
+        free(temp2);
+        return head;
+    }
+}
 void print_array(Node* head){
 for(Node* temp=head;temp!=NULL;temp=temp->next){
     printf("%d ",temp->data);
@@ -55,7 +83,9 @@ Node* head=createlistnode(5);
 //printf("%d",head->data);
 head=insertatpos(head,30,1);
 print_array(head);
-
+head=deleteatpos(head,1);
+printf("\n");
+print_array(head);
 
 
 
