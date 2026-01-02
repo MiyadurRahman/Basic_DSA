@@ -53,11 +53,41 @@ tail=newnode;
     }
     return head;
 }
-void deletemin(Node* head){
+void DeleteMin(){
+    if(head == NULL)
+        return;
 
+    Node* current = head;
+    Node* smallest = head;
 
+    while(current != NULL){
+        if(current->data < smallest->data)
+          { smallest = current;}
+        current = current->next;
+    }
 
+    // swap data with head
+    int temp = head->data;
+    head->data = smallest->data;
+    smallest->data = temp;
+
+    // delete head
+    Node* del = head;
+    head = head->next;
+    if(head == NULL)
+        tail = NULL;
+
+    free(del);
 }
+
+
+
+
+
+
+
+
+
 int main(){
 //  head=createlistnode(1);
 tail=head;
@@ -72,8 +102,7 @@ insertsorted(head,20);
 printlist(head);
 printf("\n");
 // printf("%d",tail->data);
- 
-
-
-    
+ DeleteMin();   
+ printf("\n");
+ printlist(head) ;
 }
