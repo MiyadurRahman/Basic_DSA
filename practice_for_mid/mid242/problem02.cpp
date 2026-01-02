@@ -48,19 +48,31 @@ Node* insertsorted(Node*head,int data){
     }
     newnode->next=temp->next;
     temp->next=newnode;
+    if(newnode->next ==NULL){
+tail=newnode;
+    }
     return head;
 }
+void deletemin(Node* head){
+
+
+
+}
 int main(){
- head=createlistnode(1);
+//  head=createlistnode(1);
 tail=head;
-head=insert(head,2);
+head=insert(head,45);
+head=insert(head,12);
+head=insert(head,3);
 head=insert(head,6);
+head=insert(head,7);
 printlist(head);
 printf("\n");
 insertsorted(head,20);
 printlist(head);
+printf("\n");
+// printf("%d",tail->data);
  
-
 
 
     
